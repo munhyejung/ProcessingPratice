@@ -22,17 +22,19 @@ void loadData() {
     Document doc = Jsoup.connect(url).get();
     String title = doc.title();
     Elements element = doc.getElementsByClass("lst50");
-
+    
+    
     //print 
     for(int i = 0; i<10; i++) {
       //println(element.html());
       Elements songName = element.get(i).getElementsByClass("ellipsis rank01");
       Elements singer = element.get(i).getElementsByClass("ellipsis rank02");
       Elements album = element.get(i).getElementsByClass("ellipsis rank03");
-      Elements albumImg = element.get(i).getElementsByClass("bg_album_frame");
+      Elements img = element.get(i).select("[width=60]");
+      String imgUrl = img.get(0).attributes().get("src");
       
-      
-      //println(albumImg.html(""));
+      //img
+      println(imgUrl);
       
       //error singerx2
       String singerText = singer.text();
