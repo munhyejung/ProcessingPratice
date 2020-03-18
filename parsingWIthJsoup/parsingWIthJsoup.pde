@@ -4,10 +4,12 @@ import org.jsoup.nodes.Document;
 String name;
 String runningtime;
 PImage poster;
+PFont f;
 
 void setup() {
   size(300,350);
   loadData(); 
+  f = create("Arial",16);
 }
 
 void draw() {
@@ -36,26 +38,30 @@ void loadData() {
       //img
       println(imgUrl);
       
+      
       //error singerx2
       String singerText = singer.text();
       singerText = singerText.substring(singerText.length()/2);
       //rank songName - singer
-      println( i+1 + ". " + songName.text() + " - " + singerText);
+      println( songName.text() + " - " + singerText);
   
       //println(singerText);
       println(album.text());
       println();
+     
+      fill(0);
+      text(songName.text(),0,0);
         
     }
     
-    
-    
   }
-  //
+  
   catch(Exception e) {
     println(e.getMessage());
+
   }
 }
+
 
 
 String giveMeTextBetween(String s,String before,String after) {
